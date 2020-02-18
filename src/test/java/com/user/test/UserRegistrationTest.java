@@ -63,14 +63,28 @@ public class UserRegistrationTest {
     @Test
     public void givenLengthOfPassword_WhenProper_ShouldReturnTrue() {
         UserRegistration user=new UserRegistration();
-        boolean result = user.validatePassword("asfgsyhjdfuew");
+        boolean result = user.validatePassword("Khaeetryuu", "^.*(?=.{8,}).*$");
         Assert.assertEquals(true,result);
     }
 
     @Test
     public void givenLengthOfPassword_WhenNotProper_ShouldReturnFalse() {
         UserRegistration user=new UserRegistration();
-        boolean result = user.validatePassword("asfgs");
+        boolean result = user.validatePassword("asfgs","^.*(?=.{8,}).*$");
         Assert.assertEquals(false,result);
     }
+
+    @Test
+    public void givenPasswordAtLeastOneUpperCase_WhenProper_ShouldReturnTrue() {
+        UserRegistration user=new UserRegistration();
+        boolean result = user.validatePassword("KadfgHHHdhe","^.*(?=.{8,})(?=.*[A-Z]).*$");
+        Assert.assertEquals(true,result);
+    }
+    @Test
+    public void givenPasswordAtLeastOneUpperCase_WhenNotProper_ShouldReturnFalse() {
+        UserRegistration user=new UserRegistration();
+        boolean result = user.validatePassword("qwertyuio","^.*(?=.{8,})(?=.*[A-Z]).*$");
+        Assert.assertEquals(false,result);
+    }
+
 }
