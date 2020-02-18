@@ -87,4 +87,17 @@ public class UserRegistrationTest {
         Assert.assertEquals(false,result);
     }
 
+    @Test
+    public void givenPasswordAtLeastOneNumericNumber_WhenProper_ShouldReturnTrue() {
+        UserRegistration user=new UserRegistration();
+        boolean result = user.validatePassword("KEgdREW123","^.*(?=.{8,})(?=.*[A-Z])(?=.*[0-9]).*$");
+        Assert.assertEquals(true,result);
+    }
+
+    @Test
+    public void givenPasswordAtLeastOneNumericNumber_WhenNotProper_ShouldReturnFalse() {
+        UserRegistration user=new UserRegistration();
+        boolean result = user.validatePassword("KEgdREWqwe","^.*(?=.{8,})(?=.*[A-Z])(?=.*[0-9]).*$");
+        Assert.assertEquals(false,result);
+    }
 }
