@@ -100,4 +100,18 @@ public class UserRegistrationTest {
         boolean result = user.validatePassword("KEgdREWqwe","^.*(?=.{8,})(?=.*[A-Z])(?=.*[0-9]).*$");
         Assert.assertEquals(false,result);
     }
+
+    @Test
+    public void givenPasswordSpecialCharacter_WhenProper_ShouldReturnTrue() {
+        UserRegistration user=new UserRegistration();
+        boolean result = user.validatePassword("KEgdR@EW123","^.*(?=.{8,})(?=.*[A-Z])(?=.*[0-9])(?=.*[@/|#$%!]).*$");
+        Assert.assertEquals(true,result);
+    }
+
+    @Test
+    public void givenPasswordSpecialCharacter_WhenNotProper_ShouldReturnFalse() {
+        UserRegistration user=new UserRegistration();
+        boolean result = user.validatePassword("KEgdREWqwe457","^.*(?=.{8,})(?=.*[A-Z])(?=.*[0-9])(?=.*[@/|#$%!]).*$");
+        Assert.assertEquals(false,result);
+    }
 }
