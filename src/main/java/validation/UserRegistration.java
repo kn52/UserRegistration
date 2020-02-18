@@ -15,4 +15,11 @@ public class UserRegistration {
     public boolean validateEmail(String email) { return email.matches (EMAIL_REGEX); }
 
     public boolean validatePhoneNumber(String pnumber){ return pnumber.matches(PHONE_NUMBER_REGEX) ;  }
+
+    public boolean validatePassword(String password){
+        if (password.length()>=8)
+            return true;
+        else
+            return false;
+    }
 }

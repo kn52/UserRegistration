@@ -59,4 +59,18 @@ public class UserRegistrationTest {
         boolean result = user.validatePhoneNumber("91384804228");
         Assert.assertEquals(false,result);
     }
+
+    @Test
+    public void givenLengthOfPassword_WhenProper_ShouldReturnTrue() {
+        UserRegistration user=new UserRegistration();
+        boolean result = user.validatePassword("asfgsyhjdfuew");
+        Assert.assertEquals(true,result);
+    }
+
+    @Test
+    public void givenLengthOfPassword_WhenNotProper_ShouldReturnFalse() {
+        UserRegistration user=new UserRegistration();
+        boolean result = user.validatePassword("asfgs");
+        Assert.assertEquals(false,result);
+    }
 }
